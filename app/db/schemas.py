@@ -1,5 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import column, Integer, String, DateTime
+from sqlalchemy import ForeignKey, column, Integer, String, DateTime
 
 Base = declarative_base()
 
@@ -23,3 +23,4 @@ class tasks(Base):
     taskName = column(String, nulleable=False)
     taskDescription = column(String, nulleable=False)
     taskExpiration = column(DateTime, nulleable=True)
+    idType = column(Integer, ForeignKey("taskType.idTask", ondelete="CASCADE", nulleable=False))
